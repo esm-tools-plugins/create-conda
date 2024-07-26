@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+
+[project]
+name = "esm-tools-create-conda-env"
+version = "0.1.0"
+authors = [
+  {name="Paul Gierz", email="pgierz@awi.de"},
+]
+description = "Create a conda environment from a yaml file"
+readme = "README.rst"
+requires-python = ">=3.6"
+dependencies = [
+  "conda",
+  "Click",
+  "ruamel.yaml",
+]
+
+[packages.find]
+where = "src"
+
+
+[project.scripts]
+create-conda-env = "create_conda.cli:main"
+[project.entry-points]
+esm_tools.plugins = [
+  "create_conda_env = create_conda.plugin:create_conda_env",
+]
